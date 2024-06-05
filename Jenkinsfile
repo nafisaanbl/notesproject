@@ -14,16 +14,6 @@ pipeline {
                 bat "docker build -t notes-app ."
             }
         }
-        stage("Push to Docker Hub"){
-            steps {
-                echo "Pushing the image to docker hub"
-                withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                bat "docker tag notes-app ${env.dockerHubUser}/notes-app:latest"
-                bat "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                bat "docker push ${env.dockerHubUser}/notes-app:latest"
-                }
-            }
-        }
         stage("Deploy"){
             steps {
                 echo "Deploying the container"
