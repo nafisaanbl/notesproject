@@ -15,6 +15,7 @@ pipeline {
             steps {
                 echo "Building the image"
                 bat "docker build -t notes-app ."
+                docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
             }
         }
         stage("Push to Docker Hub"){
