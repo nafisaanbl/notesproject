@@ -13,10 +13,10 @@ pipeline {
         }
         stage("Build"){
             steps {
-                echo "Building the image"
-                bat "docker build -t notes-app ."
                 script {
                     docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
+                    echo "Building the image"
+                    bat "docker build -t notes-app ."
                 }
             }
         }
