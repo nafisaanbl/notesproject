@@ -14,7 +14,7 @@ pipeline {
         stage("Build"){
             steps {
                 script {
-                    bat "docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")"
+                    bat "docker.build("${DOCKER_IMAGE}")"
                     echo "Building the image"
                     bat "docker build -t notes-app ."
                 }
