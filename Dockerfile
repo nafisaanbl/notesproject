@@ -26,3 +26,4 @@ USER appuser
 # File wsgi.py was not found. Please enter the Python path to wsgi file.
 CMD ["gunicorn", "--bind", "0.0.0.0:8080", "pythonPath.to.wsgi"]
 
+CMD ["python", "manage.py"]
