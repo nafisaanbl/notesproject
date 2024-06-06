@@ -1,5 +1,10 @@
 pipeline {
-    agent any 
+    agent {
+        docker {
+            image 'python:3-slim'
+            label 'docker'
+        }
+    }
     environment {
         DOCKER_IMAGE = 'python:3-slim'
         DOCKER_TAG = 'latest'
