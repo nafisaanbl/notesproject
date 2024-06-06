@@ -24,6 +24,7 @@ pipeline {
                         docker logout
                         """
                     }
+                }
                 echo "Pushing the image to docker hub"{
                 bat "docker tag notes-app ${env.dockerHubUser}/notes-app:latest"
                 bat "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
