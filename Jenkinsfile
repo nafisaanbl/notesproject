@@ -1,6 +1,8 @@
 pipeline {
     agent any 
-    
+    environment {
+        DOCKER_IMAGE = 'python:3-slim'
+    }
     stages{
         stage("Clone Code"){
             steps {
