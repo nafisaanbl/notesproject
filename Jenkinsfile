@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3-slim'
-            label 'docker'
-        }
-    }
+    agent any 
     environment {
         DOCKER_IMAGE = 'python:3-slim'
         DOCKER_TAG = 'latest'
@@ -19,7 +14,7 @@ pipeline {
         stage("Build"){
             steps {
                 script {
-                    docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")
+                    bat "docker.build("${DOCKER_IMAGE}:${DOCKER_TAG}")"
                     echo "Building the image"
                     bat "docker build -t notes-app ."
                 }
