@@ -13,11 +13,8 @@ pipeline {
         }
         stage("Build"){
             steps {
-                script {
-                    docker.build("${DOCKER_IMAGE}")
-                    echo "Building the image"
-                    bat "docker build -t notes-app ."
-                }
+                echo "Building the image"
+                bat "docker build -t notes-app ."
             }
         }
         stage("Push to Docker Hub"){
