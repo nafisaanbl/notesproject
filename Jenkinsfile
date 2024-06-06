@@ -2,6 +2,7 @@ pipeline {
     agent any 
     environment {
         DOCKER_IMAGE = 'python:3-slim'
+        DOCKER_TAG = 'latest'
     }
     stages{
         stage("Clone Code"){
@@ -23,6 +24,7 @@ pipeline {
                         bat """
                         docker tag notes-app ${env.dockerHubUser}/notes-app:latest
                         docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}
+                        docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
                         docker push ${env.dockerHubUser}/notes-app:latest
                         docker logout
                         """
